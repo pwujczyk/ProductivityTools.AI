@@ -37,7 +37,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git branch: 'main',
-                url: 'git@github.com:pwujczyk/ProductivityTools.AI.git'
+                url: 'https://github.com/pwujczyk/ProductivityTools.AI.git'
             }
         }
 
