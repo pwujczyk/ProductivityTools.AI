@@ -37,7 +37,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git branch: 'main',
-                url: 'https://github.com/pwujczyk/ProductivityTools.GoogleCloudNetworking.git'
+                url: 'git@github.com:pwujczyk/ProductivityTools.AI.git'
             }
         }
 
@@ -62,7 +62,7 @@ pipeline {
          stage('DeleteAllconfigurationDir') {
             steps {
                  script {
-                    def directoryToRemove = '/srv/jenkins/pt.googlecloudnetworking'
+                    def directoryToRemove = '/srv/jenkins/pt.ai'
                     echo "Removing directory: '${directoryToRemove}'"
 
                     echo "Checking if directory '${directoryToRemove}' exists..."
@@ -87,7 +87,7 @@ pipeline {
         stage('Copy the page') {
             steps {
                 script{
-                    def sourceDir='/var/lib/jenkins/workspace/PT.GoogleCloudNetworking'
+                    def sourceDir='/var/lib/jenkins/workspace/PT.AI'
                     def destinationDir='/srv/jenkins/'
                     //sh "mkdir -p ${destinationDir}"
 
@@ -110,14 +110,14 @@ pipeline {
             steps {
                 script{
                     sh '''
-                    if pm2 l | grep -q gcpnetworking; then
-                        echo "gcpnetworking process found. Deleting it before starting a new one."
-                        pm2 delete gcpnetworking
+                    if pm2 l | grep -q ptai; then
+                        echo "ptai process found. Deleting it before starting a new one."
+                        pm2 delete ptai
                     else
-                        echo "gcpnetworking process not found. Starting a new one."
+                        echo "ptai process not found. Starting a new one."
                     fi
                     
-                    pm2 start npm --name "gcpnetworking" -- start
+                    pm2 start npm --name "ptai" -- start
                     pm2 save
                     '''
                 }
