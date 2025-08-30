@@ -125,7 +125,7 @@ pipeline {
             }
         }
 
-        stage('pm2 list') {
+        stage('pm2 list2') {
             steps {
                 script{
                     sh '''
