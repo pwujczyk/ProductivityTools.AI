@@ -110,7 +110,7 @@ pipeline {
             steps {
                 script{
                     sh '''
-                    cd /var/lib/jenkins/workspace/PT.AI
+                    cd /srv/jenkins/pt.ai
                     if pm2 l | grep -q ptai; then
                         echo "ptai process found. Deleting it before starting a new one."
                         pm2 delete ptai
