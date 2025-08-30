@@ -88,7 +88,7 @@ pipeline {
             steps {
                 script{
                     def sourceDir='/var/lib/jenkins/workspace/PT.AI'
-                    def destinationDir='/srv/jenkins/'
+                    def destinationDir='/srv/jenkins/pt.ai'
                     //sh "mkdir -p ${destinationDir}"
 
                     sh "rsync -av --exclude='.git/' ${sourceDir}/ ${destinationDir}"
@@ -110,6 +110,7 @@ pipeline {
             steps {
                 script{
                     sh '''
+                    cd /var/lib/jenkins/workspace/PT.AI
                     if pm2 l | grep -q ptai; then
                         echo "ptai process found. Deleting it before starting a new one."
                         pm2 delete ptai
