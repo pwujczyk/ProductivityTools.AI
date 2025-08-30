@@ -123,6 +123,15 @@ pipeline {
                     '''
                 }
             }
-        }  
+        }
+
+        stage('pm2 list') {
+            steps {
+                script{
+                    sh '''
+                    pm2 l
+                    '''
+                }
+            }  
     }
 }
