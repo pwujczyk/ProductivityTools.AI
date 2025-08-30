@@ -106,7 +106,7 @@ pipeline {
             }
         }  
 
-          stage('start page') {
+        stage('start page') {
             steps {
                 script{
                     sh '''
@@ -133,5 +133,6 @@ pipeline {
                     '''
                 }
             }  
+        }
     }
 }
