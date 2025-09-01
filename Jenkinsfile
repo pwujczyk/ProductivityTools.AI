@@ -106,24 +106,26 @@ pipeline {
             }
         }  
 
-        stage('start page') {
+       stage('start page') {
             steps {
                 script{
                     sh '''
+                    export PM2_HOME="/home/pawel/.pm2" # lub inna centralna ścieżka, np. /var/lib/pm2
+
                     cd /srv/jenkins/pt.ai
-                    if pm2 l | grep -q ptai; then
-                        echo "ptai process found. Deleting it before starting a new one."
-                        pm2 delete ptai
+                    if pm2 l | grep -q ai; then
+                        echo "ai process found. Deleting it before starting a new one."
+                        pm2 delete ai
                     else
-                        echo "ptai process not found. Starting a new one."
+                        echo "gcpnetworking process not found. Starting a new one."
                     fi
                     
-                    pm2 start npm --name "ptai" -- start
+                    pm2 start npm --name "ai" -- start
                     pm2 save
                     '''
                 }
             }
-        }
+        }  
 
         stage('pm2 list2') {
             steps {
