@@ -2,7 +2,27 @@
 
 Google created simple [tutorial](https://google.github.io/adk-docs/get-started/quickstart/) how to create first agent.
 
+The tutorial helps us to unserstands what is agent.
 
+```
+root_agent = Agent(
+    name="weather_time_agent",
+    model="gemini-2.0-flash",
+    description=(
+        "Agent to answer questions about the time and weather in a city."
+    ),
+    instruction=(
+        "You are a helpful agent who can answer user questions about the time and weather in a city."
+    ),
+    tools=[get_weather, get_current_time],
+)
+```
+
+- tools - agent need source of data here the source of data is defined in the tools. In our case source of data are functions. Agent could contact, take the data from functions other agents, models.
+- instruction - this defines the agent
+- model - is used as an interfece between user and the function it converts user queries (```what is the weather in London```) to method invocation ```getWeather(london)```. 
+
+## Tutorial
 ```
 python -m venv .venv
 pip install google-adk
