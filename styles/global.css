@@ -32,3 +32,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+code{
+  background-color: rgb(233, 233, 233);
+  border: 1px;
+  border-color: lightgray;
+}
